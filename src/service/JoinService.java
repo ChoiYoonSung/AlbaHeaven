@@ -1,8 +1,5 @@
 package service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +37,7 @@ public class JoinService {
 		}
 		return View.HOME; 
 	}
+	
 	private void joinalba() {
 		System.out.println("개인회원 가입을 선택하셨습니다.");
 		System.out.println("상세정보 입력해주세요.");
@@ -60,36 +58,24 @@ public class JoinService {
 		System.out.print("주소>");
 		String albaAdd = ScanUtil.nextLine();
 		
-		SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date albaBirth = null;
-		try {
-			albaBirth = new Date(afterFormat.parse(albaBir).getTime());
-			
-			Map<String, Object> param = new HashMap<>();//[11.HashMap에 저장]
-			param.put("ALBA_ID", albaId);
-			param.put("ALBA_PASSWORD", albaPassword);
-			param.put("ALBA_BIR", albaBirth);
-			param.put("ALBA_NAME", albaName);
-			param.put("ALBA_SEXDSTN", albSexdstn);
-			param.put("ALBA_MAIL", albaMail);
-			param.put("ALBA_TEL", albaTel);
-			param.put("ALBA_ADD", albaAdd);
-			param.put("ALBA_AUTH", 1);
-			
-			int result = userDao.insertUser(param);
-			
-			if(0<result){
-				System.out.println("회원가입 성공");
-			}else {
-				System.out.println("회원가입 실패");
-			}
-			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Map<String, Object> param = new HashMap<>();//[11.HashMap에 저장]
+		param.put("ALBA_ID", albaId);
+		param.put("ALBA_PASSWORD", albaPassword);
+		param.put("ALBA_BIR", albaBir);
+		param.put("ALBA_NAME", albaName);
+		param.put("ALBA_SEXDSTN", albSexdstn);
+		param.put("ALBA_MAIL", albaMail);
+		param.put("ALBA_TEL", albaTel);
+		param.put("ALBA_ADD", albaAdd);
+		param.put("ALBA_AUTH", 1);
+		
+		int result = userDao.insertUser(param);
+		
+		if(0<result){
+			System.out.println("회원가입 성공");
+		}else {
+			System.out.println("회원가입 실패");
 		}
-		
-		
 	}
 	private void joincompany() {
 

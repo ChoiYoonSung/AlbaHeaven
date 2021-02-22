@@ -1,9 +1,8 @@
 package controller;
 
-import java.util.Map;
-
 import service.JoinService;
 import service.LoginService;
+import service.MainService;
 import util.ScanUtil;
 import util.View;
 
@@ -12,11 +11,11 @@ public class Controller {
 	public static void main(String[] args) {
 		new Controller().start();
 	}
-	public static Map<String, Object> loginAlba;
-	public static Map<String, Object> loginCom;
 	
 	private JoinService joinService = JoinService.getInstance();
 	private LoginService loginService = LoginService.getInstance();
+	private MainService mainService = MainService.getInstance();
+	
 	private void start() {
 		int view =View.HOME;
 		
@@ -25,6 +24,7 @@ public class Controller {
 			case View.HOME: view = home(); break;
 			case View.LOGIN:view = loginService.login(); break;
 			case View.JOIN: view = joinService.join(); break;
+			case View.MAIN: view = mainService.service(); break;
 			}
 		}
 	}

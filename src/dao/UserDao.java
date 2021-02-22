@@ -68,6 +68,10 @@ public class UserDao {
 		
 		return jdbc.selectOne(sql,param);
 	}
+
+	public Map<String, Object> selectMan(String manId, String password) {
+		return null;
+	}
 	
 	
 }
