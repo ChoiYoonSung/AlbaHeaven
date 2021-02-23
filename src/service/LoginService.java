@@ -41,9 +41,9 @@ public class LoginService {
 	
 	public int loginalba() {
 		System.out.print("아이디>");
-		String albaId = ScanUtil.nextLine();
+		String albaId = "A001"; //스캔유틸로 추후 변경 필수
 		System.out.print("비밀번호>");
-		String password = ScanUtil.nextLine();
+		String password = "1234";
 		
 		Map<String, Object> user = userDao.selectUser(albaId, password);//[18.selectUser메서드 만들어주고]
 		
@@ -90,8 +90,8 @@ public class LoginService {
 			System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
 		} else {
 			System.out.println("로그인 성공");
-			MainService.loginCom = user;
-			System.out.println("관리자이신  "+MainService.loginCom.get("MAN_NAME")+"님 어서오세요");
+			MainService.loginMan = user;
+			System.out.println("관리자이신  "+MainService.loginMan.get("MAN_NAME")+"님 어서오세요");
 			return View.MAIN;
 		}
 		return login();

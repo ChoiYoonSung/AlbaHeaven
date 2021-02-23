@@ -15,7 +15,7 @@ public class JoinService {
 			instance = new JoinService();
 		}
 		return instance;
-}
+	}
 	
 	private UserDao userDao = UserDao.getInstance();
 	
@@ -39,6 +39,7 @@ public class JoinService {
 	}
 	
 	private void joinalba() {
+		String albSex ="";
 		System.out.println("개인회원 가입을 선택하셨습니다.");
 		System.out.println("상세정보 입력해주세요.");
 		System.out.print("아이디>");
@@ -51,6 +52,10 @@ public class JoinService {
 		String albaName = ScanUtil.nextLine();
 		System.out.print("성별> 남자 : 0 , 여자 : 1");
 		int albSexdstn = ScanUtil.nextInt();
+		if(albSexdstn==0){
+			 albSex ="남";
+		}
+		else{albSex ="여";}
 		System.out.print("이메일>");
 		String albaMail = ScanUtil.nextLine();
 		System.out.print("연락처>");
@@ -63,11 +68,11 @@ public class JoinService {
 		param.put("ALBA_PASSWORD", albaPassword);
 		param.put("ALBA_BIR", albaBir);
 		param.put("ALBA_NAME", albaName);
-		param.put("ALBA_SEXDSTN", albSexdstn);
+		param.put("ALBA_SEXDSTN", albSex);
 		param.put("ALBA_MAIL", albaMail);
 		param.put("ALBA_TEL", albaTel);
 		param.put("ALBA_ADD", albaAdd);
-		param.put("ALBA_AUTH", 1);
+		param.put("AUTH", 1);
 		
 		int result = userDao.insertUser(param);
 		
@@ -107,7 +112,7 @@ public class JoinService {
 		param.put("COM_ADD", comAdd);
 		param.put("COM_TEL", comTel);
 		param.put("COM_CEO", comCeo);
-		param.put("COM_AUTH", 2); //권한 2번 : 기업
+		param.put("AUTH", 2); //권한 2번 : 기업
 				
 		int result = userDao.insertCom(param);
 		

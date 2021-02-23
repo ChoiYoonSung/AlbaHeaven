@@ -16,7 +16,7 @@ public class Controller {
 	private LoginService loginService = LoginService.getInstance();
 	private MainService mainService = MainService.getInstance();
 	
-	private void start() {
+	public int start() {
 		int view =View.HOME;
 		
 		while(true){

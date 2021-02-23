@@ -13,6 +13,4 @@ public class OtherDao {
 	
 	private JDBCUtil jdbc = JDBCUtil.getInstance();
 	
-	
-	
 }

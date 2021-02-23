@@ -30,7 +30,7 @@ public class UserDao {
 		p.add(param.get("ALBA_MAIL"));
 		p.add(param.get("ALBA_TEL"));
 		p.add(param.get("ALBA_ADD"));
-		p.add(param.get("ALBA_AUTH"));
+		p.add(param.get("AUTH"));
 		return jdbc.update(sql,p);
 	}
 	
@@ -47,12 +47,12 @@ public class UserDao {
 		p.add(param.get("COM_ADD"));
 		p.add(param.get("COM_TEL"));
 		p.add(param.get("COM_CEO"));
-		p.add(param.get("COM_AUTH"));
+		p.add(param.get("AUTH"));
 		return jdbc.update(sql,p);
 	}
 	
 	public Map<String, Object> selectUser(String albaId, String password) {
-		String sql = "select * from ALBA where alba_id = ? and alba_password = ?"; 
+		String sql = "SELECT * FROM ALBA WHERE ALBA_ID = ? AND ALBA_PASSWORD = ?"; 
 		List<Object> param = new ArrayList<>();
 		param.add(albaId);
 		param.add(password);
