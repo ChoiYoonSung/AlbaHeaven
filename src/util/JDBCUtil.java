@@ -100,7 +100,7 @@ public class JDBCUtil {
 
 			while (rs.next()) {
 				hashMap = new HashMap<>();
-				for (int i = 1; i < columnCount; i++) {
+				for (int i = 1; i <= columnCount; i++) {
 					hashMap.put(metaData.getColumnName(i), rs.getObject(i));
 				}
 			}
@@ -127,7 +127,7 @@ public class JDBCUtil {
 
 			while (rs.next()) {
 				HashMap<String, Object> row = new HashMap<>();
-				for (int i = 1; i < columnCount; i++) {
+				for (int i = 1; i <= columnCount; i++) {
 					row.put(metaData.getColumnName(i), rs.getObject(i));
 				}
 				list.add(row);
@@ -161,7 +161,7 @@ public class JDBCUtil {
 
 			while (rs.next()) {
 				HashMap<String, Object> row = new HashMap<>();
-				for (int i = 1; i < columnCount; i++) {
+				for (int i = 1; i <= columnCount; i++) {
 					row.put(metaData.getColumnName(i), rs.getObject(i));
 				}
 				list.add(row);

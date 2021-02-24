@@ -51,8 +51,8 @@ public class LoginService {
 			System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
 		}else{
 			System.out.println("로그인 성공");
-			MainService.loginAlba = user;//[20.loginUser변수 만들고  BOARD_LIST로 리턴]
-			System.out.println("개인회원이신  "+MainService.loginAlba.get("ALBA_NAME")+"님 어서오세요");
+			MainService.login = user;//[20.loginUser변수 만들고  BOARD_LIST로 리턴]
+			System.out.println("개인회원이신  "+MainService.login.get("ALBA_NAME")+"님 어서오세요");
 			return View.MAIN;
 			}		
 		return login();
@@ -60,9 +60,9 @@ public class LoginService {
 
 	public int logincompany () {//[17.LOGIN도 JOIN과 동일하게]
 		System.out.print("아이디>");
-		String comId = ScanUtil.nextLine();
+		String comId = "B001";
 		System.out.print("비밀번호>");
-		String password = ScanUtil.nextLine();
+		String password = "1234";
 		
 		Map<String, Object> user = userDao.selectCom(comId, password);//[18.selectUser메서드 만들어주고]
 		
@@ -70,8 +70,8 @@ public class LoginService {
 			System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
 		}else{
 			System.out.println("로그인 성공");
-			MainService.loginCom = user;//[20.loginUser변수 만들고  BOARD_LIST로 리턴]
-			System.out.println("기업회원이신  "+MainService.loginCom.get("COM_NAME")+"님 어서오세요");
+			MainService.login = user;//[20.loginUser변수 만들고  BOARD_LIST로 리턴]
+			System.out.println("기업회원이신  "+MainService.login.get("COM_NAME")+"님 어서오세요");
 			return View.MAIN;
 		
 		}
@@ -90,8 +90,8 @@ public class LoginService {
 			System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
 		} else {
 			System.out.println("로그인 성공");
-			MainService.loginMan = user;
-			System.out.println("관리자이신  "+MainService.loginMan.get("MAN_NAME")+"님 어서오세요");
+			MainService.login = user;
+			System.out.println("관리자이신  "+MainService.login.get("MAN_NAME")+"님 어서오세요");
 			return View.MAIN;
 		}
 		return login();

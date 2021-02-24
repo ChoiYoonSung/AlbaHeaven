@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,8 @@ public class UserDao {
 			instance = new UserDao();
 		}
 		return instance;
-}
+	}
+	
 	private JDBCUtil jdbc = JDBCUtil.getInstance();
 	
 	public int insertUser(Map<String, Object> param) {
@@ -50,9 +52,9 @@ public class UserDao {
 		p.add(param.get("AUTH"));
 		return jdbc.update(sql,p);
 	}
-	
+
 	public Map<String, Object> selectUser(String albaId, String password) {
-		String sql = "SELECT * FROM ALBA WHERE ALBA_ID = ? AND ALBA_PASSWORD = ?"; 
+		String sql = "select * from ALBA where alba_id = ? and alba_password = ?"; 
 		List<Object> param = new ArrayList<>();
 		param.add(albaId);
 		param.add(password);
@@ -68,10 +70,15 @@ public class UserDao {
 		
 		return jdbc.selectOne(sql,param);
 	}
-
+	
 	public Map<String, Object> selectMan(String manId, String password) {
-		return null;
+		String sql = "select * from Manager where man_id = ? and man_password = ?"; 
+		List<Object> param = new ArrayList<>();
+		param.add(manId);
+		param.add(password);
+		
+		return jdbc.selectOne(sql,param);
 	}
 	
-	
 }
+
