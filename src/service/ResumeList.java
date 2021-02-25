@@ -11,8 +11,8 @@ import util.View;
 import dao.MainDao;
 
 public class ResumeList {
-	private ResumeList(){}//생성자
-	private static ResumeList instance;//변수생성
+	private ResumeList(){}
+	private static ResumeList instance;
 	public static ResumeList getInstance(){
 		if(instance == null){
 			instance = new ResumeList();
@@ -25,7 +25,7 @@ public class ResumeList {
 	public int resumeLs() {
 		resumels();
 		if (((BigDecimal) MainService.login.get("AUTH")).intValue()==1){
-		System.out.println("1.내 이력서 보기\t2.이력서 올리기\t0.뒤로가기");
+		System.out.println("1.내 이력서 보기\t0.뒤로가기");
 		System.out.print(">");
 		int input = ScanUtil.nextInt();
 		
@@ -64,7 +64,6 @@ public class ResumeList {
 		}
 		return resumeLs();
 	}
-	
 
 	//이력서 게시판 전체 출력
 	private void resumels() {
@@ -87,8 +86,9 @@ public class ResumeList {
 	//이력서 게시판 개인 내용 확인
 	private void myresumels() {
 		
-			System.out.println("내 이력서 게시판 보기");
-			
+			System.out.println("");
+			System.out.println("===============내 이력서 게시판 보기===============");
+
 			Map<String, Object> param = new HashMap<>();
 			param.put("ALBA_ID", MainService.login.get("ALBA_ID"));
 			
@@ -119,17 +119,19 @@ public class ResumeList {
 				System.out.println("이력서공개기간\t: " + resumeList.get(0).get("RESUME_OPENTERM"));
 				System.out.println("희망근무요일\t: " + resumeList.get(0).get("RESUME_DAY"));
 				
+				System.out.println("===================경력리스트===================");
 				for (int j = 0; j < careerList.size(); j++) {
+					System.out.println("경력 " + (j+1));
 					System.out.println("경력회사명\t\t: " + careerList.get(j).get("CR_COM_NAME"));
 					System.out.println("경력근무기간\t: " + careerList.get(j).get("CR_COM_TERM"));
 					System.out.println("경력담당업무\t: " + careerList.get(j).get("CR_COM_TASK"));
 				}
 			}
-			System.out.println("=================면접제의=================");
+			System.out.println("===================면접제의===================");
 			for (int i = 0; i < likeresumeList.size(); i++) {
 				System.out.println(i+1 + "번 : " + likeresumeList.get(i).get("RH_LIKE"));
 			}
-			System.out.println("======================================");
+			System.out.println("===========================================");
 			System.out.println("1.수정\t2.삭제\t0.뒤로가기");
 			System.out.print(">");
 			int input = ScanUtil.nextInt();
@@ -251,7 +253,9 @@ public class ResumeList {
 			System.out.println("이력서공개기간\t: " + resumeList.get(i).get("RESUME_OPENTERM"));
 			System.out.println("희망근무요일\t: " + resumeList.get(i).get("RESUME_DAY"));
 			
+			System.out.println("===================경력리스트===================");
 			for (int j = 0; j < careerList.size(); j++) {
+				System.out.println("경력 " + (j+1));
 				System.out.println("경력회사명\t\t: " + careerList.get(j).get("CR_COM_NAME"));
 				System.out.println("경력근무기간\t: " + careerList.get(j).get("CR_COM_TERM"));
 				System.out.println("경력담당업무\t: " + careerList.get(j).get("CR_COM_TASK"));
@@ -259,7 +263,7 @@ public class ResumeList {
 		}
 		
 		System.out.println("======================================");
-		System.out.println("1.제의하기\t0.뒤로가기");
+		System.out.println("1.면접 제의하기\t0.뒤로가기");
 		System.out.println(">");
 		int input2 = ScanUtil.nextInt();
 		
@@ -319,7 +323,9 @@ public class ResumeList {
 			System.out.println("이력서공개기간\t: " + resumeList.get(i).get("RESUME_OPENTERM"));
 			System.out.println("희망근무요일\t: " + resumeList.get(i).get("RESUME_DAY"));
 			
+			System.out.println("===================경력리스트===================");
 			for (int j = 0; j < careerList.size(); j++) {
+				System.out.println("경력 " + (j+1));
 				System.out.println("경력회사명\t\t: " + careerList.get(j).get("CR_COM_NAME"));
 				System.out.println("경력근무기간\t: " + careerList.get(j).get("CR_COM_TERM"));
 				System.out.println("경력담당업무\t: " + careerList.get(j).get("CR_COM_TASK"));

@@ -11,8 +11,8 @@ import util.ScanUtil;
 import util.View;
 
 public class HireList {
-	private HireList(){}//생성자
-	private static HireList instance;//변수생성
+	private HireList(){}
+	private static HireList instance;
 	public static HireList getInstance(){
 		if(instance == null){
 			instance = new HireList();
@@ -43,6 +43,7 @@ public class HireList {
 			
 			switch(input){
 			case 1: alhirels(); break;
+//			case 2: alkeywordhire(); break;
 			case 0: return View.MAIN;
 			default:
 				System.out.println("잘못 입력하였습니다.");
@@ -50,7 +51,7 @@ public class HireList {
 			}
 			return hireLs();
 		}else{
-			System.out.println("1.이력서 번호 선택\t0.뒤로가기");
+			System.out.println("1.채용공고 번호 선택\t0.뒤로가기");
 			System.out.println(">");
 			int input = ScanUtil.nextInt();
 			
@@ -65,9 +66,6 @@ public class HireList {
 		}
 		return hireLs();
 	}
-	
-	
-
 	
 	
 	//채용공고 전체 게시판 출력(완)
@@ -88,6 +86,8 @@ public class HireList {
 
 	//채용공고 게시판 올리기
 	private void inhirels() {
+		
+		
 		System.out.println("채용공고 올리기");
 		System.out.println("구인제목");
 		System.out.println("주의) 6글자 이상 입력하여야 합니다.");
@@ -176,8 +176,39 @@ public class HireList {
 			System.out.println("채용공고 업로드를 실패하였습니다.");
 		}
 	}
+	/*
+	//개인회원 키워드 검색
+	private void alkeywordhire() {
+		System.out.println("검색하고 싶은 대분류를 선택하십시오.");
+		List<Map<String, Object>> keywordHire = mainDao.keyword();
+		
+		for (int i = 0; i < keywordHire.size(); i++) {
+			System.out.print(i+1 + ". " + keywordHire.get(i).get("COMMON_TYPE") + " | ");
+		}
+		System.out.println();
+		
+		System.out.print(">");
+		int input = ScanUtil.nextInt();
+		String keywordnum = "T0" + input;
+		
+		
+		Map<String, Object> param = new HashMap<>();
+		param.put("COMMON_TYPE_COD", keywordnum);
+		
+		List<Map<String,Object>> keywordSearch = mainDao.keywordSearch(param);
+		
+		for (int i = 0; i < keywordSearch.size(); i++) {
+			System.out.print(i+1 + ". " + keywordSearch.get(i).get("COMMON_COD_NAME") + " | ");
+		}		
+		System.out.println();
+//		System.out.println("검색하고 싶은 키워드를 입력하십시오.(오타x)");
+//		String input2 = ScanUtil.nextLine();
+		System.out.println(">");
+		int input2 = ScanUtil.nextInt();
+	}*/
 	
-	int hireNum = 1;
+
+
 	//개인회원 채용공고 리스트
 	private void alhirels() {
 		System.out.println("조회 하고 싶은 채용공고 번호를 입력하십시오.");
@@ -290,15 +321,13 @@ public class HireList {
 			if(checkHireResume.size() > 0){
 				int result1 = mainDao.manDeleteHireResume(param);
 				int result2 = mainDao.manDeleteHire(param);
-				System.out.println(result1);
-				System.out.println(result2);
+				
 				if(0<result1 || 0<result2)
 					System.out.println("삭제를 완료하였습니다.");		
 				else
 					System.out.println("삭제를 실패하였습니다.");
 			}else{
 				int result2 = mainDao.manDeleteHire(param);
-				System.out.println(result2);
 				if(0<result2)
 					System.out.println("삭제를 완료하였습니다.");		
 				else

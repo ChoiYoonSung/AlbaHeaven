@@ -39,7 +39,6 @@ public class JoinService {
 	}
 	
 	private void joinalba() {
-		String albSex ="";
 		System.out.println("개인회원 가입을 선택하셨습니다.");
 		System.out.println("상세정보 입력해주세요.");
 		System.out.print("아이디>");
@@ -50,6 +49,7 @@ public class JoinService {
 		String albaBir = ScanUtil.nextLine();
 		System.out.print("이름>");
 		String albaName = ScanUtil.nextLine();
+		String albSex ="";
 		System.out.print("성별> 남자 : 0 , 여자 : 1");
 		int albSexdstn = ScanUtil.nextInt();
 		if(albSexdstn==0){

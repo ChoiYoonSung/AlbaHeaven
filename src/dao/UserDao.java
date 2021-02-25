@@ -8,8 +8,8 @@ import java.util.Map;
 import util.JDBCUtil;
 
 public class UserDao {
-	private UserDao(){}//생성자
-	private static UserDao instance;//변수생성
+	private UserDao(){}
+	private static UserDao instance;
 	public static UserDao getInstance(){
 		if(instance == null){
 			instance = new UserDao();

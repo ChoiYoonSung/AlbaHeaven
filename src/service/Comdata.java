@@ -1,6 +1,8 @@
 package service;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import dao.AlbaMenuDao;
@@ -19,13 +21,15 @@ public class Comdata {
 }
 	private ComMenuDao comMenuDao = ComMenuDao.getInstance();
 	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	
 	public void Modify() {
 		System.out.println("1.수정\t2.탈퇴\t3.뒤로가기\t0.로그아웃");
 		System.out.print("입력>");
 		int input = ScanUtil.nextInt();
 		switch (input) {
-		case 1: update(); Modify();
-		case 2: delete();
+		case 1: update();Modify();break;
+		case 2: delete();break;
 		case 3:break;
 		case 0:break;
 		default:
@@ -37,7 +41,7 @@ public class Comdata {
 
 	private int delete() {
 		Map<String, Object> comdata = new HashMap<>();
-		System.out.println("정말로 삭제하시겠습니까");
+		System.out.println("정말로 탈퇴하시겠습니까");
 		System.out.print("1.YES\t2.NO");
 		int input = ScanUtil.nextInt();
 		switch (input) {
@@ -47,12 +51,13 @@ public class Comdata {
 				System.out.println("삭제 성공");
 				System.out.println("처음 화면으로 돌아갑니다.");
 				MainService.login =null;
+				
 				return View.HOME;
 			}else {
 				System.out.println("삭제 실패");
-				
 			}
-		case 2: Modify();
+			break;
+		case 2: Modify();break;
 	
 		default:
 			System.out.println("다시 입력해주세요");
@@ -92,5 +97,7 @@ public class Comdata {
 				System.out.println("수정 실패");
 			}
 		}
+
+	
 	}
 

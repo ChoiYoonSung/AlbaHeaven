@@ -7,8 +7,8 @@ import util.ScanUtil;
 import util.View;
 
 public class LoginService {
-	private LoginService(){}//생성자
-	private static LoginService instance;//변수생성
+	private LoginService(){}
+	private static LoginService instance;
 	public static LoginService getInstance(){
 		if(instance == null){
 			instance = new LoginService();
@@ -41,36 +41,36 @@ public class LoginService {
 	
 	public int loginalba() {
 		System.out.print("아이디>");
-		String albaId = "A001"; //스캔유틸로 추후 변경 필수
+		String albaId = "A004"; //스캔유틸로 추후 변경 필수
 		System.out.print("비밀번호>");
 		String password = "1234";
 		
-		Map<String, Object> user = userDao.selectUser(albaId, password);//[18.selectUser메서드 만들어주고]
+		Map<String, Object> user = userDao.selectUser(albaId, password);
 		
 		if(user == null){
 			System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
 		}else{
 			System.out.println("로그인 성공");
-			MainService.login = user;//[20.loginUser변수 만들고  BOARD_LIST로 리턴]
+			MainService.login = user;
 			System.out.println("개인회원이신  "+MainService.login.get("ALBA_NAME")+"님 어서오세요");
 			return View.MAIN;
 			}		
 		return login();
 	}
 
-	public int logincompany () {//[17.LOGIN도 JOIN과 동일하게]
+	public int logincompany () {
 		System.out.print("아이디>");
-		String comId = "B001";
+		String comId = "COM001"; //추후 변경 필수
 		System.out.print("비밀번호>");
 		String password = "1234";
 		
-		Map<String, Object> user = userDao.selectCom(comId, password);//[18.selectUser메서드 만들어주고]
+		Map<String, Object> user = userDao.selectCom(comId, password);
 		
 		if(user == null){
 			System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
 		}else{
 			System.out.println("로그인 성공");
-			MainService.login = user;//[20.loginUser변수 만들고  BOARD_LIST로 리턴]
+			MainService.login = user;
 			System.out.println("기업회원이신  "+MainService.login.get("COM_NAME")+"님 어서오세요");
 			return View.MAIN;
 		
@@ -84,7 +84,7 @@ public class LoginService {
 		System.out.print("비밀번호>");
 		String password = ScanUtil.nextLine();
 
-		Map<String, Object> user = userDao.selectMan(manId, password);// [18.selectUser메서드 만들어주고]
+		Map<String, Object> user = userDao.selectMan(manId, password);
 
 		if (user == null) {
 			System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");

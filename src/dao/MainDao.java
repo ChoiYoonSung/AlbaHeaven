@@ -7,9 +7,9 @@ import java.util.Map;
 import util.JDBCUtil;
 
 public class MainDao {
-	private MainDao() {}// 생성자
+	private MainDao() {}
 
-	private static MainDao instance;// 변수생성
+	private static MainDao instance;
 
 	public static MainDao getInstance() {
 		if (instance == null) {
@@ -263,6 +263,7 @@ public class MainDao {
 		p.add(param.get("HIRE_NO"));
 		return jdbc.selectList(sql, p);
 	}
+	
 	//개인회원 - 채용공고 신청
 	public int offerhireList(Map<String, Object> param) {
 		String sql = " INSERT INTO HIRE_RESUME"
@@ -309,8 +310,24 @@ public class MainDao {
 		return jdbc.update(sql, p);
 	}
 
-	
+/*	// 개인회원 키워드 검색
+	public List<Map<String, Object>> keyword() {
+		String sql = " SELECT DISTINCT A.COMMON_TYPE, B.COMMON_TYPE_COD"
+				+ " FROM COMMON A, COMMON B"
+				+ " WHERE A.COMMON_TYPE_COD = B.COMMON_TYPE_COD"
+				+ " ORDER BY B.COMMON_TYPE_COD";
+		return jdbc.selectList(sql);
+	}
 
-	
-	
+	public List<Map<String, Object>> keywordSearch(Map<String, Object> param) {
+		String sql = " SELECT DISTINCT * "
+				   + " FROM COMMON"
+				   + " WHERE COMMON_TYPE_COD = ?";
+		
+		List<Object> p = new ArrayList<>();
+		p.add(param.get("COMMON_TYPE_COD"));
+		
+		return jdbc.selectList(sql, p);
+	}*/
+
 }

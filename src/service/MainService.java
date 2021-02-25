@@ -25,6 +25,8 @@ public class MainService {
 	private ServiceCenter sc = ServiceCenter.getInstance();
 	private ResumeList rl = ResumeList.getInstance();
 	private HireList hl = HireList.getInstance();
+	private AlbaQna albaQna = AlbaQna.getInstance();
+	private ComQna comQna = ComQna.getInstance();
 	
 	public int service() {
 		int view = View.MAIN;
@@ -35,8 +37,8 @@ public class MainService {
 			case View.MYMENU: view = mymenu.myMenu(); break;
 			case View.RESUMELS: view = rl.resumeLs(); break;
 			case View.HIRELS: view = hl.hireLs(); break;
-			case View.QNAALBA: view = sc.qnaAlba(); break;
-			case View.QNACOM: view = sc.qnaCom(); break;
+			case View.QNAALBA: view = albaQna.qnaAlba(); break;
+			case View.QNACOM: view = comQna.qnaCom(); break;
 			case View.GUIDE: view = sc.guide(); break;
 			case View.NOTICE: view = sc.notice(); break;
 			case View.HOME: view = new Controller().start(); break;
