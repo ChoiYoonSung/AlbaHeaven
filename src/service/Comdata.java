@@ -24,6 +24,7 @@ public class Comdata {
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 	
 	public void Modify() {
+		System.out.println("===========================================");
 		System.out.println("1.수정\t2.탈퇴\t3.뒤로가기\t0.로그아웃");
 		System.out.print("입력>");
 		int input = ScanUtil.nextInt();
@@ -40,6 +41,7 @@ public class Comdata {
 	}
 
 	private int delete() {
+		System.out.println("=====================탈퇴====================");
 		Map<String, Object> comdata = new HashMap<>();
 		System.out.println("정말로 탈퇴하시겠습니까");
 		System.out.print("1.YES\t2.NO");
@@ -68,6 +70,7 @@ public class Comdata {
 	}
 
 	private void update() {
+		System.out.println("===================정보 수정===================");
 		Map<String, Object> comdata = new HashMap<>();
 		String[] keyname = {"ID","PASSWORD","사업자등록번호","회사명","이메일","주소","연락처","대표자명","권한"};
 		String[] key = {"COM_ID","COM_PASSWORD","COM_REGNO","COM_NAME","COM_MAIL","COM_ADD","COM_TEL","COM_CEO","AUTH"};

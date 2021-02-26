@@ -31,15 +31,15 @@ public class ServiceCenter {
 	//가이드 게시판 목록  - 완
 	public int guide() {	
 		List<Map<String, Object>> guideList = OtherDao.guideList();		
-		System.out.println("==================== 이용가이드 ===================");
+		System.out.println("===================이용 가이드==================");
 		System.out.println("번호\t제목\t작성자");
-		System.out.println("-------------------------------------------------");
+		System.out.println("--------------------------------------------");
 		for (Map<String, Object> GUIDE : guideList) {
 			System.out.println(GUIDE.get("GUIDE_NO") + "\t"
 					+ GUIDE.get("GUIDE_TITLE") + "\t"
 					+ GUIDE.get("MAN_ID"));
 		}
-		System.out.println("=================================================");
+		System.out.println("===========================================");
 		System.out.println("1.조회\t2.등록\t0.돌아가기");
 		System.out.print("입력>");
 
@@ -62,6 +62,7 @@ public class ServiceCenter {
 	
 	// 가이드 게시판 조회  - 완
 		private void selectGuide() {
+			System.out.println("===================가이드 조회==================");
 			System.out.println("조회할 게시글의 번호를 입력해주세요>");
 			int guideNo = ScanUtil.nextInt();
 			Map<String, Object> param = new HashMap<>();
@@ -69,12 +70,12 @@ public class ServiceCenter {
 
 			List<Map<String, Object>> selectGuide = OtherDao.selectGuide(param);
 
-			System.out.println("===================== 이용가이드 ======================");
+			System.out.println("===================이용가이드==================");
 			System.out.println("글번호 : " + selectGuide.get(0).get("GUIDE_NO"));
 			System.out.println("아이디 : " + selectGuide.get(0).get("MAN_ID"));
 			System.out.println("제목 : " + selectGuide.get(0).get("GUIDE_TITLE"));
 			System.out.println("내용 : " + selectGuide.get(0).get("GUIDE_CONTENT"));
-			System.out.println("===================================================");
+			System.out.println("===========================================");
 			System.out.println("1.수정\t2.삭제\t0.돌아가기");
 			System.out.print("입력>");
 			int input = ScanUtil.nextInt();
@@ -118,6 +119,7 @@ public class ServiceCenter {
 	
 	// 가이드 게시판 수정 - 완
 	private void updateGuide(int guideNo) {
+		System.out.println("===================가이드 수정==================");
 		System.out.println("수정할 제목>");
 		String title = ScanUtil.nextLine();
 		System.out.println("수정할 내용>");
@@ -161,6 +163,7 @@ public class ServiceCenter {
 	
 	//가이드 게시판 삭제 - 완
 	private void deleteGudie(int guideNo) {
+		System.out.println("===================가이드 삭제==================");
 		System.out.println("현재 게시글을 삭제하시겠습니까? y or n");
 		System.out.println("입력 >");
 		String input = ScanUtil.nextLine();
@@ -209,6 +212,7 @@ public class ServiceCenter {
 	
 	// 가이드 게시글 등록 - 완
 	private int insertGuide() {
+		System.out.println("===================가이드 등록==================");
 		System.out.print("제목>");
 		String Title = ScanUtil.nextLine();
 		System.out.print("내용>");
@@ -235,16 +239,16 @@ public class ServiceCenter {
 	// 공지 게시판 목록  - 완
 	public int notice() {
 		List<Map<String, Object>> noticeList = OtherDao.NoticeList();		
-		System.out.println("======================= 공지 ======================");
+		System.out.println("====================공지사항===================");
 		System.out.println("번호\t제목\t작성자\t작성일");
-		System.out.println("-------------------------------------------------");
+		System.out.println("---------------------------------------------");
 		for (Map<String, Object> NOTICE : noticeList) {
 			System.out.println(NOTICE.get("NOTICE_NO") + "\t"
 					+ NOTICE.get("NOTICE_TITLE") + "\t"
 					+ NOTICE.get("MAN_ID") + "\t"
 					+ sdf.format(NOTICE.get("NOTICE_DATE")));
 		}
-		System.out.println("=================================================");
+		System.out.println("===========================================");
 		System.out.println("1.조회\t2.등록\t0.돌아가기");
 		System.out.print("입력>");
 
@@ -267,6 +271,7 @@ public class ServiceCenter {
 
 	// 공지 게시판 조회  - 완
 			private void selectNotice() {
+				System.out.println("==================공지사항 조회==================");
 				System.out.println("조회할 게시글의 번호를 입력해주세요>");
 				int noticeNo = ScanUtil.nextInt();
 				Map<String, Object> param = new HashMap<>();
@@ -274,13 +279,13 @@ public class ServiceCenter {
 
 				List<Map<String, Object>> selectNotice = OtherDao.selectNotice(param);
 
-				System.out.println("======================= 공지사항 ======================");
+				System.out.println("====================공지사항===================");
 				System.out.println("글번호 : " + selectNotice.get(0).get("NOTICE_NO"));
 				System.out.println("작성일 : " + sdf.format(selectNotice.get(0).get("NOTICE_DATE")));
 				System.out.println("아이디 : " + selectNotice.get(0).get("MAN_ID"));
 				System.out.println("제목 : " + selectNotice.get(0).get("NOTICE_TITLE"));
 				System.out.println("내용 : " + selectNotice.get(0).get("NOTICE_CONTENT"));
-				System.out.println("===================================================");
+				System.out.println("===========================================");
 				System.out.println("1.수정\t2.삭제\t0.돌아가기");
 				System.out.print("입력>");
 				int input = ScanUtil.nextInt();
@@ -325,6 +330,7 @@ public class ServiceCenter {
 
 	// 공지 게시판 수정 - 완
 	private void updateNotice(int noticeNo) {
+		System.out.println("===================공지사항 수정=================");
 		System.out.println("수정할 제목>");
 		String title = ScanUtil.nextLine();
 		System.out.println("수정할 내용>");
@@ -362,6 +368,7 @@ public class ServiceCenter {
 	}
 	// 공지 게시판 삭제 - 완
 	private void deleteNotice(int noticeNo) {
+		System.out.println("==================공지사항 삭제==================");
 		System.out.println("현재 게시글을 삭제하시겠습니까? y or n");
 		System.out.println("입력 >");
 		String input = ScanUtil.nextLine();
@@ -410,6 +417,7 @@ public class ServiceCenter {
 	
 	// 공지 게시글 등록 - 완
 	private int insertNotice() {
+		System.out.println("===================공지사항 등록=================");
 		System.out.print("제목>");
 		String title = ScanUtil.nextLine();
 		System.out.print("내용>");
@@ -420,7 +428,6 @@ public class ServiceCenter {
 		param.put("NOTICE_CONTENT", content);
 		param.put("NOTICE_DATE", sdf.format(now));
 		param.put("MAN_ID", MainService.login.get("MAN_ID"));
-
 		int result = OtherDao.insertNotice(param);
 
 		if (0 < result) {

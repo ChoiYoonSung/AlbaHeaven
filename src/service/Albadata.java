@@ -8,6 +8,7 @@ import java.util.Map;
 
 
 
+
 import controller.Controller;
 import dao.AlbaMenuDao;
 import dao.ResumeDao;
@@ -28,6 +29,7 @@ public class Albadata {
 	private Careerdata cd = Careerdata.getInstance();
 	
 	public int Modify() {
+		System.out.println("==========================================");
 		System.out.println("1.수정\t2.탈퇴\t3.마이메뉴\t0.로그아웃");
 		System.out.print("입력>");
 		int input = ScanUtil.nextInt();
@@ -52,6 +54,7 @@ public class Albadata {
 	}
 
 	private int delete() {
+		System.out.println("====================탈퇴====================");
 		Map<String, Object> albadata = new HashMap<>();
 		System.out.println("정말로 탈퇴 하시겠습니까");
 		System.out.print("1.YES\t2.NO");
@@ -80,6 +83,7 @@ public class Albadata {
 
 	
 	private void update() {
+		System.out.println("====================수정====================");
 		Map<String, Object> albadata = new HashMap<>();
 		String[] keyname = {"ID","PASSWORD","이름","생일","성별","메일","연락처","주소","권한"};
 		String[] key = {"ALBA_ID","ALBA_PASSWORD","ALBA_NAME","ALBA_BIR","ALBA_SEXDSTN","ALBA_MAIL","ALBA_TEL","ALBA_ADD","AUTH"};
@@ -115,6 +119,7 @@ public class Albadata {
 	}
 
 	public int resumeModify() {
+		System.out.println("==========================================");
 		System.out.println("1.이력서수정\t2.경력 추가 \t3. 경력 삭제 \t4. 메인메뉴");
 		System.out.print("입력>");
 		int input = ScanUtil.nextInt();
@@ -142,6 +147,7 @@ public class Albadata {
 	}
 
 	private int updateResume() {
+		System.out.println("==================이력서 수정===================");
 		Map<String, Object> param = new HashMap<>();
 		param.put("ALBA_ID", MainService.login.get("ALBA_ID"));
 		Map<String, Object> resume = albaMenuDao.selectResume(param);

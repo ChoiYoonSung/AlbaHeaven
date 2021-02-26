@@ -1,7 +1,6 @@
 package service;
 
 import java.math.BigDecimal;
-
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -42,7 +41,7 @@ public class MyMenu {
 			comMenu();
 		}
 		else if(((BigDecimal) MainService.login.get("AUTH")).intValue()==3){
-			System.out.println("관리자는 확인할게 없습니다.");
+			System.out.println("관리자는 확인할 수 없습니다.");
 		}
 	}catch (NullPointerException a) {
 		
@@ -54,6 +53,7 @@ public class MyMenu {
 	
 
 	public void albaMenu() {// 알바메뉴
+		System.out.println("===========================================");
 		System.out.println("1.내 정보 보기\t 2.내가 쓴 이력서 보기\t 3.마이메뉴");
 		int input = ScanUtil.nextInt();
 		switch (input) {
@@ -91,7 +91,7 @@ public class MyMenu {
 			      "학력사항1","학력사항2","경력사항", 
 			      "자기소개서","희망근무지","희망업종","희망형태", 
 			      "희망근무기간","희망근무시간","이력서공개기간","희망근무요일"};
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("=====================이력서===================");
 		for (int i = 0; i < 3; i++) {
 			System.out.println(resumeKeyname[i] + " : \t"
 					+ resume.get(resumeKey[i]));
@@ -102,7 +102,7 @@ public class MyMenu {
 			System.out.println(resumeKeyname[i] + " : \t"
 					+ resume.get(resumeKey[i]));
 		}
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("===========================================");
 		careerdata.Career();
 		albaData.resumeModify();
 	}
@@ -117,6 +117,7 @@ public class MyMenu {
 		int input = ScanUtil.nextInt();
 		switch (input) {
 		case 1:
+			System.out.println("===================이력서 작성==================");
 			Map<String, Object> param = new HashMap<>();
 			param.put("ALBA_ID", MainService.login.get("ALBA_ID"));
 			Map<String, Object> par = new HashMap<>();
@@ -266,7 +267,7 @@ public class MyMenu {
 	public int albadata() {
 		String[] keyname = {"ID","PASSWORD","이름","생일","성별","메일","연락처","주소","권한"};
 		String[] key = {"ALBA_ID","ALBA_PASSWORD","ALBA_NAME","ALBA_BIR","ALBA_SEXDSTN","ALBA_MAIL","ALBA_TEL","ALBA_ADD","AUTH"};
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("====================개인정보===================");
 		for (int i = 0; i < 3; i++) {
 			System.out.println(keyname[i] + " : "
 					+ MainService.login.get(key[i]));
@@ -277,7 +278,7 @@ public class MyMenu {
 			System.out.println(keyname[i] + " : "
 					+ MainService.login.get(key[i]));
 		}
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("===========================================");
 		albaData.Modify();
 		return 0;
 	}
@@ -318,11 +319,9 @@ public class MyMenu {
 
 		String[] hireKey = { "HIRE_TITLE", "COM_NAME", "HIRE_DATE" };
 
-		System.out
-				.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("====================채용공고===================");
 		System.out.println("번호\t제목\t\t\t\t작성자\t작성일");
-		System.out
-				.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("===========================================");
 		for (int i = 0; i < list.size(); i++) {
 			System.out.print(1 + i + "\t");
 			for (int j = 0; j < hireKey.length - 1; j++) {
@@ -334,8 +333,7 @@ public class MyMenu {
 					+ "\t");
 			System.out.println();
 		}
-		System.out
-				.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("===========================================");
 		System.out.println("1.번호 선택\t 2.뒤로가기");
 		int input = ScanUtil.nextInt();
 
@@ -360,12 +358,12 @@ public class MyMenu {
 				"연락처", "대표자명", "권한" };
 		String[] key = { "COM_ID", "COM_PASSWORD", "COM_REGNO", "COM_NAME",
 				"COM_MAIL", "COM_ADD", "COM_TEL", "COM_CEO", "AUTH" };
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("====================기업정보===================");
 		for (int i = 0; i < keyname.length; i++) {
 			System.out.println(keyname[i] + " : "
 					+ MainService.login.get(key[i]));
 		}
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("===========================================");
 		comData.Modify();
 		return 0;
 

@@ -27,16 +27,16 @@ public class Careerdata {
 		param.put("ALBA_ID", MainService.login.get("ALBA_ID"));
 		String[] key = {"CR_NUM","CR_COM_NAME","CR_COM_TERM","CR_COM_TASK"};
 		List<Map<String, Object>> list = careerDao.selectcareer(param);
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("===========================================");
 		System.out.println("번호\t\t회사명\t\t기간\t\t업무");
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("===========================================");
 		for (int i = 0; i < list.size(); i++) {
 			for (int j = 0; j < key.length; j++) {
 				System.out.print(list.get(i).get(key[j]) + "\t\t");
 			}
 			System.out.println();
 		}
-		System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("===========================================");
 		
 	}
 
@@ -44,6 +44,7 @@ public class Careerdata {
 
 	//번호 회사명 근무기간 업무 이력서번호
 	public void insertcareer() {
+		System.out.println("===================경력 추가===================");
 		System.out.println("회사명");
 		System.out.print(">");
 		String company = ScanUtil.nextLine();
@@ -71,6 +72,7 @@ public class Careerdata {
 
 
 	public void deletecareer() {
+		System.out.println("===================경력 삭제===================");
 		System.out.println("삭제하려는 번호를 입력하십시오.");
 		System.out.print(">");
 		int input = ScanUtil.nextInt();

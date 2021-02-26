@@ -24,39 +24,53 @@ public class ResumeList {
 	
 	public int resumeLs() {
 		resumels();
-		if (((BigDecimal) MainService.login.get("AUTH")).intValue()==1){
-		System.out.println("1.내 이력서 보기\t0.뒤로가기");
-		System.out.print(">");
-		int input = ScanUtil.nextInt();
-		
-		switch(input){
-		case 1: myresumels(); break;
-		case 2: inresumels(); break;
-		case 0: return View.MAIN;
-		default:
-			System.out.println("잘못 입력하였습니다.");
-			break;
-		}
-		}else if (((BigDecimal) MainService.login.get("AUTH")).intValue()==2){
-			System.out.println("1.이력서 번호 선택\t0.뒤로가기");
-			System.out.println(">");
+		if (((BigDecimal) MainService.login.get("AUTH")).intValue() == 1) {
+			System.out.println("==========================================");
+			System.out.println("1.내 이력서 보기\t0.뒤로가기");
+			System.out.print(">");
 			int input = ScanUtil.nextInt();
-			
-			switch(input){
-			case 1: comresumels(); break;
-			case 0: return View.MAIN;
+
+			switch (input) {
+			case 1:
+				myresumels();
+				break;
+			case 2:
+				inresumels();
+				break;
+			case 0:
+				return View.MAIN;
 			default:
 				System.out.println("잘못 입력하였습니다.");
 				break;
 			}
-		}else{
+		} else if (((BigDecimal) MainService.login.get("AUTH")).intValue() == 2) {
+			System.out.println("==========================================");
 			System.out.println("1.이력서 번호 선택\t0.뒤로가기");
 			System.out.println(">");
 			int input = ScanUtil.nextInt();
-			
-			switch(input){
-			case 1: manresumels(); break;
-			case 0: return View.MAIN;
+
+			switch (input) {
+			case 1:
+				comresumels();
+				break;
+			case 0:
+				return View.MAIN;
+			default:
+				System.out.println("잘못 입력하였습니다.");
+				break;
+			}
+		} else {
+			System.out.println("==========================================");
+			System.out.println("1.이력서 번호 선택\t0.뒤로가기");
+			System.out.println(">");
+			int input = ScanUtil.nextInt();
+
+			switch (input) {
+			case 1:
+				manresumels();
+				break;
+			case 0:
+				return View.MAIN;
 			default:
 				System.out.println("잘못입력하였습니다.");
 				break;
@@ -69,9 +83,9 @@ public class ResumeList {
 	private void resumels() {
 		List<Map<String, Object>> resumeBoardList = mainDao.resumeBoardList();
 		
-		System.out.println("======================================");
+		System.out.println("===========================================");
 		System.out.println("번호\t제목\t\t작성자\t작성일");
-		System.out.println("--------------------------------------");
+		System.out.println("-------------------------------------------");
 		
 		for(Map<String, Object> board : resumeBoardList){
 			System.out.println(board.get("RL_NO") + "\t" 
@@ -79,7 +93,7 @@ public class ResumeList {
 							 + board.get("ALBA_NAME") + "\t"
 							 + sdf.format(board.get("RL_DATE")));
 		}
-		System.out.println("======================================");
+		System.out.println("===========================================");
 	}
 	
 	
@@ -153,6 +167,7 @@ public class ResumeList {
 
 	//이력서 게시판 수정
 	private void updateresumels() {
+		System.out.println("================이력서 게시판 수정================");
 		System.out.println("수정할 제목");
 		System.out.println(">");
 		String title = ScanUtil.nextLine();
@@ -171,6 +186,7 @@ public class ResumeList {
 	
 	//이력서 게시판 삭제
 	private void deleteresumels() {
+		System.out.println("=============== 이력서 게시판 삭제================");
 		System.out.println("이력서를 게시판에서 삭제하시겠습니까? (Y/N)");
 		System.out.println(">");
 		String input = ScanUtil.nextLine();
@@ -201,6 +217,7 @@ public class ResumeList {
 	
 	//이력서 게시판에 올리기
 	private void inresumels() {
+		System.out.println("===============이력서 게시판 올리기===============");
 		System.out.println("이력서 제목");
 		System.out.println("주의) 5글자 이상 입력하여야 합니다.");
 		System.out.println(">");
@@ -222,6 +239,7 @@ public class ResumeList {
 
 	//기업회원 - 어필하기
 	private void comresumels() {
+		System.out.println("==================이력서 조회==================");
 		System.out.println("조회 하고 싶은 이력서 번호를 입력하십시오.");
 		System.out.print(">");
 		int input = ScanUtil.nextInt();
@@ -231,6 +249,8 @@ public class ResumeList {
 		
 		List<Map<String, Object>> resumeList = mainDao.resumeHirels(param);
 		List<Map<String, Object>> careerList = mainDao.careerHirels(param);
+		
+		System.out.println("====================이력서===================");
 		for (int i = 0; i < resumeList.size(); i++) {
 			System.out.println("이력서리스트\t: " + resumeList.get(i).get("RL_NO"));
 			System.out.println("제목\t\t: " + resumeList.get(i).get("RL_TITLE"));
@@ -288,9 +308,9 @@ public class ResumeList {
 		System.out.println("신청이 완료되었습니다.");
 	}
 	
-	
 	//관리자
 	private void manresumels() {
+		System.out.println("==================이력서 조회==================");
 		System.out.println("보고 싶은 이력서 번호를 입력하십시오.");
 		System.out.print(">");
 		int input = ScanUtil.nextInt();
@@ -300,6 +320,8 @@ public class ResumeList {
 		
 		List<Map<String, Object>> resumeList = mainDao.resumeHirels(param);
 		List<Map<String, Object>> careerList = mainDao.careerHirels(param);
+		
+		System.out.println("====================이력서===================");
 		for (int i = 0; i < resumeList.size(); i++) {
 			
 			System.out.println("이력서리스트\t: " + resumeList.get(i).get("RL_NO"));
@@ -349,6 +371,7 @@ public class ResumeList {
 
 	//관리자 이력서 삭제
 	private void manresumedelete(Integer input) {
+		System.out.println("==================이력서 삭제==================");
 		System.out.println("이력서를 게시판에서 삭제하시겠습니까? (Y/N)");
 		System.out.println(">");
 		String input2 = ScanUtil.nextLine();

@@ -18,8 +18,8 @@ public class LoginService {
 	private UserDao userDao = UserDao.getInstance();
 	
 	public int login() {
-		System.out.println("로그인 하시겠습니까?");
-		System.out.println("1.개인회원 \t 2.기업회원 \t 3.관리자 \t 0.뒤로가기");
+		System.out.println("====================로그인====================");
+		System.out.println("1.개인회원\t2.기업회원\t3.관리자\t0.뒤로가기");
 		System.out.println("번호를 입력해주세요>");
 		int input =ScanUtil.nextInt();
 		
@@ -41,9 +41,9 @@ public class LoginService {
 	
 	public int loginalba() {
 		System.out.print("아이디>");
-		String albaId = "A004"; //스캔유틸로 추후 변경 필수
+		String albaId = ScanUtil.nextLine();
 		System.out.print("비밀번호>");
-		String password = "1234";
+		String password = ScanUtil.nextLine();
 		
 		Map<String, Object> user = userDao.selectUser(albaId, password);
 		
@@ -52,7 +52,7 @@ public class LoginService {
 		}else{
 			System.out.println("로그인 성공");
 			MainService.login = user;
-			System.out.println("개인회원이신  "+MainService.login.get("ALBA_NAME")+"님 어서오세요");
+			System.out.println(MainService.login.get("ALBA_NAME")+"님(개인) 어서오세요");
 			return View.MAIN;
 			}		
 		return login();
@@ -60,9 +60,9 @@ public class LoginService {
 
 	public int logincompany () {
 		System.out.print("아이디>");
-		String comId = "COM001"; //추후 변경 필수
+		String comId = ScanUtil.nextLine();
 		System.out.print("비밀번호>");
-		String password = "1234";
+		String password = ScanUtil.nextLine();
 		
 		Map<String, Object> user = userDao.selectCom(comId, password);
 		
@@ -71,7 +71,7 @@ public class LoginService {
 		}else{
 			System.out.println("로그인 성공");
 			MainService.login = user;
-			System.out.println("기업회원이신  "+MainService.login.get("COM_NAME")+"님 어서오세요");
+			System.out.println(MainService.login.get("COM_NAME")+"님(기업) 어서오세요");
 			return View.MAIN;
 		
 		}
@@ -91,7 +91,7 @@ public class LoginService {
 		} else {
 			System.out.println("로그인 성공");
 			MainService.login = user;
-			System.out.println("관리자이신  "+MainService.login.get("MAN_NAME")+"님 어서오세요");
+			System.out.println(MainService.login.get("MAN_NAME")+"님 어서오세요");
 			return View.MAIN;
 		}
 		return login();

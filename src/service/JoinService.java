@@ -21,6 +21,7 @@ public class JoinService {
 	
 	
 	public int join() {
+		System.out.println("====================회원가입===================");
 		System.out.println("회원가입을 환영합니다");
 		System.out.println("1.개인회원가입\t 2.기업회원가입");
 		System.out.println("번호를 입력해주세요>");
@@ -83,7 +84,6 @@ public class JoinService {
 		}
 	}
 	private void joincompany() {
-
 		System.out.println("기업 가입을 선택하셨습니다.");
 		System.out.println("상세정보 입력해주세요.");
 		System.out.print("아이디>");

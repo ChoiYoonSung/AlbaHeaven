@@ -24,7 +24,7 @@ public class AlbaQna {
 		}
 		return instance;
 	}
-
+	
 	private OtherDao otherDao = OtherDao.getInstance();
 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -34,9 +34,9 @@ public class AlbaQna {
 	public int qnaAlbaList() {
 		List<Map<String, Object>> qnaAlbaList = OtherDao.qnaAlbaList();
 
-		System.out.println("================== 개인회원 Q & A =================");
+		System.out.println("=================개인회원 Q&A=================");
 		System.out.println("번호\t제목\t\t작성자\t\t작성일");
-		System.out.println("-------------------------------------------------");
+		System.out.println("-------------------------------------------");
 		for (Map<String, Object> QAALBABOARD : qnaAlbaList) {
 			System.out.println(QAALBABOARD.get("QA_AL_NUM") + "\t"
 					+ QAALBABOARD.get("QA_AL_TITLE") + "  "
@@ -44,7 +44,7 @@ public class AlbaQna {
 					+ QAALBABOARD.get("ALBA_ID") + "\t"
 					+ sdf.format(QAALBABOARD.get("QA_AL_DATE")));
 		}
-		System.out.println("=================================================");
+		System.out.println("==========================================");
 		System.out.println("1.조회\t2.등록\t0.돌아가기");
 		System.out.print("입력>");
 
@@ -86,7 +86,7 @@ public class AlbaQna {
 
 		List<Map<String, Object>> selectQnaAlba = OtherDao.selectQnaAlba(param);
 
-		System.out.println("================== 개인회원 Q & A =================");
+		System.out.println("=================개인회원 Q&A=================");
 		System.out.println("글번호 : " + selectQnaAlba.get(0).get("QA_AL_NUM"));
 		System.out.println("작성일 : "
 				+ sdf.format(selectQnaAlba.get(0).get("QA_AL_DATE")));
@@ -94,11 +94,11 @@ public class AlbaQna {
 		System.out.println("제목 : " + selectQnaAlba.get(0).get("QA_AL_TITLE"));
 		System.out.println("내용 : " + selectQnaAlba.get(0).get("QA_AL_CONTENT"));
 		System.out
-				.println("------------------------답변------------------------");
+				.println("---------------------답변---------------------");
 		System.out.println("작성일 : " + selectQnaAlba.get(0).get("AL_DATE"));
 		System.out.println("작성자 : " + selectQnaAlba.get(0).get("AL_MAN_ID"));
 		System.out.println("내   용 : " + selectQnaAlba.get(0).get("AL_CONTENT"));
-		System.out.println("===================================================");
+		System.out.println("============================================");
 		System.out.println("1.게시글 수정\t2.게시글 삭제\t0.돌아가기");
 		System.out.println("3.댓글 등록\t4.댓글 수정\t5.댓글 삭제");
 		System.out.print("입력>");

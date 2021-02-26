@@ -84,20 +84,19 @@ public class ComQna {
 
 		List<Map<String, Object>> selectQnaCom = OtherDao.selectQnaCom(param);
 
-		System.out.println("================== 기업회원 Q & A =================");
+		System.out.println("===================기업회원 Q&A===================");
 		System.out.println("글번호 : " + selectQnaCom.get(0).get("QA_COM_NUM"));
 		System.out.println("작성일 : "
 				+ sdf.format(selectQnaCom.get(0).get("QA_COM_DATE")));
 		System.out.println("아이디 : " + selectQnaCom.get(0).get("QA_COM_ID"));
 		System.out.println("제목 : " + selectQnaCom.get(0).get("QA_COM_TITLE"));
 		System.out.println("내용 : " + selectQnaCom.get(0).get("QA_COM_CONTENT"));
-		System.out
-				.println("------------------------답변------------------------");
+		System.out.println("=====================경력======================");
 		System.out.println("작성일 : " + selectQnaCom.get(0).get("COM_DATE"));
 		System.out.println("작성자 : " + selectQnaCom.get(0).get("COM_MAN_ID"));
 		System.out.println("내용 : " + selectQnaCom.get(0).get("COM_CONTENT"));
 		System.out
-				.println("===================================================");
+				.println("================================================");
 		System.out.println("1.게시글 수정\t2.게시글 삭제\t0.돌아가기");
 		System.out.println("3.댓글 등록\t4.댓글수정\t5.댓글삭제");
 		System.out.print("입력>");
@@ -153,6 +152,7 @@ public class ComQna {
 
 	// 기업Q&A 게시글 수정 - 완
 	private void updateComQna(int qnaComNo) {
+		System.out.println("===================게시글 수정===================");
 		System.out.println("수정할 제목>");
 		String title = ScanUtil.nextLine();
 		System.out.println("수정할 내용>");
@@ -200,6 +200,7 @@ public class ComQna {
 
 	// 기업Q&A 게시판 삭제 - 완
 	private void deleteComQna(int qnaComNo) {
+		System.out.println("===================게시글 삭제===================");
 		System.out.println("현재 게시글을 삭제하시겠습니까? y or n");
 		System.out.println("입력 >");
 		String input = ScanUtil.nextLine();
@@ -245,6 +246,7 @@ public class ComQna {
 
 	// 기업Q&A 게시글 등록 - 완
 	private int insertComQna() {
+		System.out.println("===================게시글 등록===================");
 		System.out.print("제목>");
 		String qnaTitle = ScanUtil.nextLine();
 		System.out.print("내용>");
@@ -313,6 +315,7 @@ public class ComQna {
 
 	// 기업Q&A 댓글 수정 - 완
 	private int updateComQnaComm(int qnaComNo) {
+		System.out.println("===================댓글 수정===================");
 		System.out.println("댓글 내용>");
 		String comment = ScanUtil.nextLine();
 
@@ -357,7 +360,8 @@ public class ComQna {
 
 	// 기업Q&A 댓글삭제 - 완
 	private void deleteComQnaComm(int qnaComNo) {
-		System.out.println("현재 게시글을 삭제하시겠습니까? y or n");
+		System.out.println("===================댓글 삭제===================");
+		System.out.println("현재 댓글을 삭제하시겠습니까? y or n");
 		System.out.println("입력 >");
 		String input = ScanUtil.nextLine();
 

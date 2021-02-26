@@ -48,9 +48,11 @@ public class MainService {
 	
 
 	public int serviceList(){
-		System.out.println("1. 마이메뉴\t2. 이력서게시판\t3. 채용게시판");
-		System.out.println("4. 개인 Q&A\t5. 기업 Q&A\t6. 이용가이드");
-		System.out.println("7. 공지사항\t8. 로그아웃\t0. 종료");
+		System.out.println("===========================================");
+		System.out.println(" 1. 마이메뉴\t2. 이력서게시판\t3. 채용게시판");
+		System.out.println(" 4. 개인 Q&A\t5. 기업 Q&A\t6. 이용가이드");
+		System.out.println(" 7. 공지사항\t8. 로그아웃\t0. 종료");
+		System.out.println("===========================================");
 		System.out.print(">");
 		int input = ScanUtil.nextInt();
 		

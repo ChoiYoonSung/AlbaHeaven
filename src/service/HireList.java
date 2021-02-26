@@ -24,6 +24,7 @@ public class HireList {
 	
 	public int hireLs() {
 		hirels();
+		System.out.println("===========================================");
 		if (((BigDecimal) MainService.login.get("AUTH")).intValue()==2){
 		System.out.println("1.채용공고 올리기\t0.뒤로가기");
 		System.out.print(">");
@@ -37,6 +38,7 @@ public class HireList {
 			break;
 		}
 		}else if (((BigDecimal) MainService.login.get("AUTH")).intValue()==1){
+			System.out.println("==========================================");
 			System.out.println("1.채용공고 번호 선택\t0.뒤로가기");
 			System.out.println(">");
 			int input = ScanUtil.nextInt();
@@ -51,6 +53,7 @@ public class HireList {
 			}
 			return hireLs();
 		}else{
+			System.out.println("==========================================");
 			System.out.println("1.채용공고 번호 선택\t0.뒤로가기");
 			System.out.println(">");
 			int input = ScanUtil.nextInt();
@@ -72,23 +75,22 @@ public class HireList {
 	private void hirels() {
 		List<Map<String, Object>> hireBoardList = mainDao.hireBoardList();
 		
-		System.out.println("======================================");
+		System.out.println("=================채용공고 게시판=================");
 		System.out.println("번호\t제목\t\t작성자\t공고종료일");
-		System.out.println("--------------------------------------");
+		System.out.println("--------------------------------------------");
 		for(Map<String, Object> board : hireBoardList){
 			System.out.println(board.get("HIRE_NO") + "\t" 
 							 + ((String) board.get("HIRE_TITLE")).substring(0,6) + "...\t"
 							 + board.get("COM_NAME") + "\t"
 							 + sdf.format(board.get("HIRE_DATE")));
 		}
-		System.out.println("======================================");
+		System.out.println("============================================");
 	}
 
 	//채용공고 게시판 올리기
 	private void inhirels() {
 		
-		
-		System.out.println("채용공고 올리기");
+		System.out.println("=====================채용공고 올리기=====================");
 		System.out.println("구인제목");
 		System.out.println("주의) 6글자 이상 입력하여야 합니다.");
 		System.out.print(">");
@@ -211,6 +213,7 @@ public class HireList {
 
 	//개인회원 채용공고 리스트
 	private void alhirels() {
+		System.out.println("===================채용공고====================");
 		System.out.println("조회 하고 싶은 채용공고 번호를 입력하십시오.");
 		System.out.print(">");
 		int input = ScanUtil.nextInt();
@@ -220,8 +223,9 @@ public class HireList {
 		
 		List<Map<String, Object>> hireList = mainDao.hireResumels(param);
 		
-		
-		for (int i = 0; i < hireList.size(); i++) {			
+		System.out.println("====================채용공고====================");
+		for (int i = 0; i < hireList.size(); i++) {	
+			
 			System.out.println("구인제목\t:" + hireList.get(i).get("HIRE_TITLE"));
 			System.out.println("연령\t:" + hireList.get(i).get("HIRE_AGE"));
 			System.out.println("지역\t:" + hireList.get(i).get("HIRE_ADD"));
@@ -237,7 +241,7 @@ public class HireList {
 			System.out.println("구인날짜\t:" + hireList.get(i).get("HIRE_DATE"));
 		}
 		
-		System.out.println("======================================");
+		System.out.println("==========================================");
 		System.out.println("1.신청하기\t0.뒤로가기");
 		System.out.println(">");
 		int input2 = ScanUtil.nextInt();
@@ -265,6 +269,7 @@ public class HireList {
 
 	//관리자 채용공고 리스트
 	private void manhirels() {
+		System.out.println("===================채용공고===================");
 		System.out.println("조회 하고 싶은 채용공고 번호를 입력하십시오.");
 		System.out.print(">");
 		int input = ScanUtil.nextInt();
@@ -274,7 +279,7 @@ public class HireList {
 		
 		List<Map<String, Object>> hireList = mainDao.hireResumels(param);
 		
-		
+		System.out.println("===================채용공고===================");
 		for (int i = 0; i < hireList.size(); i++) {			
 			System.out.println("구인제목\t:" + hireList.get(i).get("HIRE_TITLE"));
 			System.out.println("연령\t:" + hireList.get(i).get("HIRE_AGE"));
@@ -291,7 +296,7 @@ public class HireList {
 			System.out.println("구인날짜\t:" + hireList.get(i).get("HIRE_DATE"));
 		}
 		
-		System.out.println("======================================");
+		System.out.println("==========================================");
 		System.out.println("1.삭제\t0.뒤로가기");
 		System.out.println(">");
 		int input2 = ScanUtil.nextInt();
